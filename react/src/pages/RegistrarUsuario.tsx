@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../styles/Registro.module.css';
 
 const initialState: Persona = {
-    apellido: "",
+    password: "",
     correo: "",
     edad: 0,
     fechaNacimiento: "",
@@ -25,7 +25,7 @@ const RegistrarUsuario: React.FC = () => {
     const validarCampos = () => {
         if (
             !persona.nombre.trim() ||
-            !persona.apellido.trim() ||
+            !persona.password.trim() ||
             !persona.correo.trim() ||
             !persona.fechaNacimiento.trim() ||
             persona.edad <= 0
@@ -59,22 +59,22 @@ const RegistrarUsuario: React.FC = () => {
                 {error && <div className="alert alert-danger">{error}</div>}
                 <Form>
                     <Form.Group>
-                        <Form.Label>Nombre:</Form.Label>
+                        <Form.Label>Nombre de Usuario:</Form.Label>
                         <Form.Control
                             type='text'
-                            placeholder='Ingrese su nombre'
+                            placeholder='Ingrese su nombre de usuario'
                             name="nombre"
                             value={persona.nombre}
                             onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Apellido:</Form.Label>
+                        <Form.Label>Contraseña:</Form.Label>
                         <Form.Control
-                            type='text'
-                            placeholder='Ingrese su apellido'
-                            name="apellido"
-                            value={persona.apellido}
+                            type='password'
+                            placeholder='Ingrese su contraseña'
+                            name="password"
+                            value={persona.password}
                             onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
                         />
                     </Form.Group>

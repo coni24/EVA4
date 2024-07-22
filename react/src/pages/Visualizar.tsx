@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import { Button } from 'react-bootstrap';
+import { Button, Modal} from 'react-bootstrap';
 import Link from 'next/link';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -53,12 +53,12 @@ export const Visualizar = () => {
                             return(
                                 <tr>
                                     <td>{p.nombre}</td> 
-                                    <td>{p.apellido}</td>
+                                    <td>{p.password}</td>
                                     <td>{p.correo}</td>
                                     <td>{p.fechaNacimiento}</td>
                                     <td>{p.edad}</td>
                                     <td>
-                                        <Link href={{pathname:'Actualizar',query:{key:p.key}}}>
+                                        <Link href={{pathname:'ActualizarPersona',query:{key:p.key}}}>
                                         <Button variant='warning'><FaEdit /></Button>
                                         </Link>
                                         <Button variant='danger'><MdDelete /></Button>    
@@ -92,7 +92,7 @@ export const Visualizar = () => {
                             <td>{pr.precio}</td>
                             <td>{pr.cantidad}</td>
                             <td>
-                                <Link href={{ pathname: 'Actualizar', query: { key: pr.key } }}>
+                                <Link href={{ pathname: 'ActualizarProducto', query: { key: pr.key } }}>
                                     <Button variant='warning'><FaEdit /></Button>
                                 </Link>
                                 <Button variant='danger'><MdDelete /></Button>

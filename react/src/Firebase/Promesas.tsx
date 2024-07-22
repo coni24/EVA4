@@ -16,7 +16,7 @@ export const obtenerPersonas = async()=>{
     const querySnapshot = await getDocs(collection(db, "personas"));
     querySnapshot.forEach((doc) => {
         let persona:Persona = {
-            apellido:doc.data().apellido,
+            password:doc.data().apellido,
             correo:doc.data().correo,
             edad:doc.data().edad,
             fechaNacimiento:doc.data().fechaNacimiento,
@@ -32,7 +32,7 @@ export const obtenerPersona = async(key:string)=>{
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
         let persona:Persona = {
-            apellido:docSnap.data().apellido,
+            password:docSnap.data().apellido,
             correo:docSnap.data().correo,
             edad:docSnap.data().edad,
             fechaNacimiento:docSnap.data().fechaNacimiento,
@@ -82,4 +82,9 @@ export const obtenerProducto = async(key:string)=>{
     } else {
       return undefined
     }
+};
+
+export const actualizarProducto = async(p:Producto)=>{
+    const ref = doc(collection(db,"productos",p.key!))
+    await updateDoc(ref,{...p})
 };

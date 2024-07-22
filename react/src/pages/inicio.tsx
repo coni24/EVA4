@@ -10,6 +10,7 @@ const Inicio = () => {
     router.push('/login');
   };
 
+  
   const handleNavigation = (path: string) => {
     router.push(path);
   };
@@ -21,7 +22,7 @@ const Inicio = () => {
           <li onClick={() => handleNavigation('/RegistrarUsuario')}>Registrar nuevo usuario</li>
           <li onClick={() => handleNavigation('/RegistrarProductos')}>Registro según temática</li>
           <li onClick={() => handleNavigation('/Visualizar')}>Visualizar lo registrado</li>
-          <li onClick={handleLogout}>Salir</li>
+          <li onClick={()=> handleNavigation('/Login')}>Salir</li>
         </ul>
       </nav>
     </div>
