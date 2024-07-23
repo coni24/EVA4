@@ -3,13 +3,15 @@ import {Persona} from '@/Interfaces/IPersona';
 import { useRouter } from "next/router";
 import React, {useEffect,useState} from 'react';
 import {Button, Form} from 'react-bootstrap';
+import styles from '../styles/Actualizar.module.css';
 
 const initialState:Persona = {
+    nombre:"",
     password:"",
+    nombreUsuario: "",
     correo:"",
     edad:0,
-    fechaNacimiento:"",
-    nombre:"",
+    fechaNacimiento:""
 }
 
 export const ActualizarPersona = () => {
@@ -29,11 +31,11 @@ export const ActualizarPersona = () => {
                   setPersona(p)
               }
               else{
-                  
+                  //persona no existe
               }
           })
       }else{
-          
+          //clave invalida
       }
       
     },[])
@@ -41,59 +43,84 @@ export const ActualizarPersona = () => {
     const modificar = ()=>{
       actualizarPersona(persona).then(()=>{
           alert("Se actualiza con exito")
+          router.push('/Visualizar')
+      }).catch((e)=>{
+        console.log(e);
+        alert("Error al actualizar")
       })
     }
     return (
-      <>
-          <Form>
-          <Form.Group>
-              <Form.Label>Nombre de Usuario:</Form.Label>
-              <Form.Control  type='text' placeholder='Ingrese su nombre: '
-              value={persona.nombre}
-              name="nombre"
-              onChange={(e)=>{handlePersona(e.currentTarget.name,e.currentTarget.value)}} />
-              <Form.Text></Form.Text>
-          </Form.Group>
-          <Form.Group>
-              <Form.Label>Contraseña:</Form.Label>
-              <Form.Control  type='text' placeholder='Ingrese su contraseña: '
-              value={persona.password}
-               name="apellido"
-               onChange={(e)=>{handlePersona(e.currentTarget.name,e.currentTarget.value)}} />
-              
-              <Form.Text></Form.Text>
-          </Form.Group>
-          <Form.Group>
-              <Form.Label>Correo:</Form.Label>
-              <Form.Control  type='email' placeholder='Ingrese su correo: ' 
-              value={persona.correo}
-               name="correo"
-               onChange={(e)=>{handlePersona(e.currentTarget.name,e.currentTarget.value)}} />
-               
-              <Form.Text></Form.Text>
-          </Form.Group>
-          <Form.Group>
-              <Form.Label>Fecha Nacimiento:</Form.Label>
-              <Form.Control  type='date' placeholder='Ingrese su fecha de nacimiento: ' 
-              value={persona.fechaNacimiento}
-               name="fechaNacimiento"
-               onChange={(e)=>{handlePersona(e.currentTarget.name,e.currentTarget.value)}} />
-               
-              <Form.Text></Form.Text>
-          </Form.Group>
-          <Form.Group>
-              <Form.Label>Edad:</Form.Label>
-              <Form.Control  type='number' placeholder='Ingrese su edad: ' 
-              value={persona.edad}
-               name="edad"
-               onChange={(e)=>{handlePersona(e.currentTarget.name,e.currentTarget.value)}} />
-               
-              <Form.Text></Form.Text>
-          </Form.Group>
-          <Button type="button" variant='success'
-              onClick={modificar}>Modificar</Button>
-      </Form>
-      </>
-    )
-  }
+        <div className={styles.container}>
+        <div className={`card ${styles.card}`}>
+            <h1 className={styles.cardTitulo}>Actualizar Persona</h1>
+            <Form>
+                <Form.Group>
+                    <Form.Label className={styles.formLabel}>Nombre:</Form.Label>
+                    <Form.Control className={styles.formEstilo}
+                        type='text'
+                        placeholder='Ingrese su nombre'
+                        value={persona.nombre}
+                        name="nombre"
+                        onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label className={styles.formLabel}>Contraseña:</Form.Label>
+                    <Form.Control className={styles.formEstilo}
+                        type='text'
+                        placeholder='Ingrese su contraseña'
+                        value={persona.password}
+                        name="password"
+                        onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label className={styles.formLabel}>Nombre de Usuario:</Form.Label>
+                    <Form.Control className={styles.formEstilo}
+                        type='text'
+                        placeholder='Ingrese su nombre de usuario'
+                        value={persona.nombreUsuario}
+                        name="nombreUsuario"
+                        onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label className={styles.formLabel}>Correo:</Form.Label>
+                    <Form.Control className={styles.formEstilo}
+                        type='email'
+                        placeholder='Ingrese su correo'
+                        value={persona.correo}
+                        name="correo"
+                        onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label className={styles.formLabel}>Fecha Nacimiento:</Form.Label>
+                    <Form.Control className={styles.formEstilo}
+                        type='date'
+                        placeholder='Ingrese su fecha de nacimiento'
+                        value={persona.fechaNacimiento}
+                        name="fechaNacimiento"
+                        onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label className={styles.formLabel}>Edad:</Form.Label>
+                    <Form.Control className={styles.formEstilo}
+                        type='number'
+                        placeholder='Ingrese su edad'
+                        value={persona.edad}
+                        name="edad"
+                        onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
+                    />
+                </Form.Group>
+                <Button type="button" variant='success' className={styles.btn} onClick={modificar}>
+                    MODIFICAR
+                </Button>
+            </Form>
+        </div>
+    </div>
+);
+}
+  
   export default ActualizarPersona

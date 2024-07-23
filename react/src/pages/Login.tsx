@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/Login.module.css';
-import { obtenerPersona } from '@/Firebase/Promesas';
+import { obtenerUsuario } from '@/Firebase/Promesas';
 
 const Login = () => {
   const [nombre, setNombre] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
+  const [autenticar, setAutenticar] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (nombre === 'admin' && password === 'admin') {
-      localStorage.setItem('isAuthenticated', 'true');
+      setAutenticar(true);
       router.push('/inicio');
     } else {
       try {
-        const usuario = await obtenerPersona(nombre);
+        const usuario = await obtenerUsuario(nombre);
         if (usuario && usuario.password === password) {
-          localStorage.setItem('isAuthenticated', 'true');
+          setAutenticar(true);
           router.push('/inicio');
         } else {
           alert('Acceso denegado');

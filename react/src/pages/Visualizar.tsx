@@ -4,13 +4,13 @@ import { Button, Modal} from 'react-bootstrap';
 import Link from 'next/link';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { obtenerPersonas, obtenerProductos } from '@/Firebase/Promesas';
+import { obtenerPersonas, obtenerProductos} from '@/Firebase/Promesas';
 import { Persona } from '@/Interfaces/IPersona';
 import { Producto } from '@/Interfaces/IProducto';
 
 export const Visualizar = () => {
     const [personas, setPersonas] = useState<Persona[]>([])
-    const [productos,setProductos] = useState<Producto[]>([]);
+    const [productos,setProductos] = useState<Producto[]>([])
     
     useEffect(()=>{
         //Traer listado de personas desde las promesas
@@ -40,7 +40,7 @@ export const Visualizar = () => {
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Apellido</th>
+                        <th>Contraseña</th>
                         <th>Correo</th>
                         <th>Fecha Nacimiento</th>
                         <th>Edad</th>

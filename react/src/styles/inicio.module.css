@@ -1,42 +1,87 @@
-/* styles/Dashboard.module.css */
 .container {
-    display: flex;
-    height: 100vh;
-    background-color: #f5f5f5;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .menuSection {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .menuSection h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .menuSection ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .menuSection li {
-    margin: 15px 0;
-    cursor: pointer;
-    padding: 10px;
-    background-color: #d4d2c9;
-    color: white;
-    border-radius: 8px;
-    text-align: center;
-    transition: background-color 0.3s;
-  }
-  
-  .menuSection li:hover {
-    background-color: #F1F0EC;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #EAEAEA;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.menu li {
+  cursor: pointer;
+  font-size: 18px;
+  color: #999797;
+  transition: color 0.3s ease;
+  font-size: 13px;
+  flex: 1;
+  text-align: center;
+  font: bold;
+}
+
+.menu li:hover{
+  color: rgb(62, 63, 63);
+}
+
+.mainContent {
+  position: relative;
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.imagen {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.mainImagen {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.textoImagen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.titulo {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 40px;
+  margin-top: 10px;
+}
+

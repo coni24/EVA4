@@ -7,14 +7,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../styles/Registro.module.css';
 
 const initialState: Persona = {
+    nombre: "",
     password: "",
+    nombreUsuario: "",
     correo: "",
     edad: 0,
-    fechaNacimiento: "",
-    nombre: ""
+    fechaNacimiento: ""
 };
 
-const RegistrarUsuario: React.FC = () => {
+function RegistrarUsuario() {
     const [persona, setPersona] = useState<Persona>(initialState);
     const [error, setError] = useState<string | null>(null);
 
@@ -53,24 +54,24 @@ const RegistrarUsuario: React.FC = () => {
     };
 
     return (
-        <div className={`d-flex justify-content-center align-items-center vh-100 ${styles.container}`}>
-            <div className="card p-4" style={{ width: '400px' }}>
-                <h1 className="card-title">Registrar Usuario</h1>
+        <div className={styles.container}>
+            <div className={`card ${styles.card}`}>
+                <h1 className={styles.cardTitulo}>Registrar Usuario</h1>
                 {error && <div className="alert alert-danger">{error}</div>}
                 <Form>
                     <Form.Group>
-                        <Form.Label>Nombre de Usuario:</Form.Label>
-                        <Form.Control
+                        <Form.Label className={styles.formLabel}>Nombre:</Form.Label>
+                        <Form.Control className={styles.formEstilo}
                             type='text'
-                            placeholder='Ingrese su nombre de usuario'
+                            placeholder='Ingrese su nombre'
                             name="nombre"
                             value={persona.nombre}
                             onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Contraseña:</Form.Label>
-                        <Form.Control
+                        <Form.Label className={styles.formLabel}>Contraseña:</Form.Label>
+                        <Form.Control className={styles.formEstilo}
                             type='password'
                             placeholder='Ingrese su contraseña'
                             name="password"
@@ -79,8 +80,18 @@ const RegistrarUsuario: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Correo:</Form.Label>
-                        <Form.Control
+                        <Form.Label className={styles.formLabel}>Nombre de Usuario:</Form.Label>
+                        <Form.Control className={styles.formEstilo}
+                            type='text'
+                            placeholder='Ingrese su nombre de usuario'
+                            name="nombreUsuario"
+                            value={persona.nombreUsuario}
+                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group> 
+                        <Form.Label className={styles.formLabel}>Correo:</Form.Label>
+                        <Form.Control className={styles.formEstilo}
                             type='email'
                             placeholder='Ingrese su correo'
                             name="correo"
@@ -89,8 +100,8 @@ const RegistrarUsuario: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Fecha Nacimiento:</Form.Label>
-                        <Form.Control
+                        <Form.Label className={styles.formLabel}>Fecha Nacimiento:</Form.Label>
+                        <Form.Control className={styles.formEstilo}
                             type='date'
                             placeholder='Ingrese su fecha de nacimiento'
                             name="fechaNacimiento"
@@ -99,8 +110,8 @@ const RegistrarUsuario: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Edad:</Form.Label>
-                        <Form.Control
+                        <Form.Label className={styles.formLabel}>Edad:</Form.Label>
+                        <Form.Control className={styles.formEstilo}
                             type='number'
                             placeholder='Ingrese su edad'
                             name="edad"
@@ -108,8 +119,8 @@ const RegistrarUsuario: React.FC = () => {
                             onChange={(e) => handlePersona(e.currentTarget.name, parseInt(e.currentTarget.value))}
                         />
                     </Form.Group>
-                    <Button type="button" variant='success' className="mt-3 w-100" onClick={registrar}>
-                        Registrar
+                    <Button type="button" variant='success' className={styles.btn} onClick={registrar}>
+                        REGISTRAR
                     </Button>
                 </Form>
             </div>

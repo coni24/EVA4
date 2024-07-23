@@ -53,14 +53,14 @@ const RegistrarProducto: React.FC = () => {
     };
 
     return (
-        <div className={`d-flex justify-content-center align-items-center vh-100 ${styles.container}`}>
-            <div className="card p-4" style={{ width: '400px' }}>
-                <h1 className="card-title">Registrar Producto</h1>
+        <div className={styles.container}>
+            <div className={styles.card}>
+                <h1 className={styles.cardTitulo}>Registrar Producto</h1>
                 {error && <div className="alert alert-danger">{error}</div>}
                 <Form>
                     <Form.Group>
-                        <Form.Label>Nombre:</Form.Label>
-                        <Form.Control
+                        <Form.Label className={styles.formLabel}>Nombre:</Form.Label>
+                        <Form.Control className={styles.formEstilo}
                             type='text'
                             placeholder='Ingrese el nombre del producto'
                             name="nombre"
@@ -69,8 +69,8 @@ const RegistrarProducto: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Categoría:</Form.Label>
-                        <Form.Control
+                        <Form.Label className={styles.formLabel}>Categoría:</Form.Label>
+                        <Form.Control className={styles.formEstilo}
                             type='text'
                             placeholder='Ingrese la categoría del producto'
                             name="categoria"
@@ -79,8 +79,8 @@ const RegistrarProducto: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Descripción:</Form.Label>
-                        <Form.Control
+                        <Form.Label className={styles.formLabel}>Descripción:</Form.Label>
+                        <Form.Control className={styles.formEstilo}
                             as='textarea'
                             placeholder='Ingrese la descripción del producto'
                             name="descripcion"
@@ -89,8 +89,8 @@ const RegistrarProducto: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Precio:</Form.Label>
-                        <Form.Control
+                        <Form.Label className={styles.formLabel}>Precio:</Form.Label>
+                        <Form.Control className={styles.formEstilo}
                             type='number'
                             placeholder='Ingrese el precio del producto'
                             name="precio"
@@ -99,8 +99,8 @@ const RegistrarProducto: React.FC = () => {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Cantidad:</Form.Label>
-                        <Form.Control
+                        <Form.Label className={styles.formLabel}>Cantidad:</Form.Label>
+                        <Form.Control className={styles.formEstilo}
                             type='number'
                             placeholder='Ingrese la cantidad del producto'
                             name="cantidad"
@@ -108,7 +108,7 @@ const RegistrarProducto: React.FC = () => {
                             onChange={(e) => handleProducto(e.currentTarget.name, parseInt(e.currentTarget.value))}
                         />
                     </Form.Group>
-                    <Button type="button" variant='success' className="mt-3 w-100" onClick={registrar}>
+                    <Button type="button" variant='success' className={styles.btn} onClick={registrar}>
                         Registrar Producto
                     </Button>
                 </Form>
