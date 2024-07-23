@@ -11,7 +11,8 @@ const initialState:Persona = {
     nombreUsuario: "",
     correo:"",
     edad:0,
-    fechaNacimiento:""
+    fechaNacimiento:"",
+    key:""
 }
 
 export const ActualizarPersona = () => {
@@ -31,7 +32,7 @@ export const ActualizarPersona = () => {
                   setPersona(p)
               }
               else{
-                  //persona no existe
+                  alert("Persona no encontrada")
               }
           })
       }else{
@@ -115,7 +116,7 @@ export const ActualizarPersona = () => {
                     />
                 </Form.Group>
                 <Button type="button" variant='success' className={styles.btn} onClick={modificar}>
-                    MODIFICAR
+                    ACTUALIZAR
                 </Button>
             </Form>
         </div>

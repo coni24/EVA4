@@ -1,15 +1,27 @@
 .container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     background-color: #f5f5f5;
   }
   
+  .loginBox {
+    display: flex;
+    width: 1300px;
+    height: 600px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
   .textSection {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #F1F0EC; 
+    background-size: cover;
+    width: 20px;
   }
   
   .textSection h1 {
@@ -26,17 +38,23 @@
     align-items: center;
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
   .formSection h2 {
-    margin-bottom: 50px;
-    font-size: 24px;
+    margin-bottom: 60px;
+    font-size: 26px;
     color: #333;
   }
+
   
+  .formSection h3 { 
+    font-size: 20px;
+    color: #bbb9b9;
+  }
+
+
   .inputGroup {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     width: 100%;
   }
   

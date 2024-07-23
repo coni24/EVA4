@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/inicio.module.css';
 import Image from 'next/image';
-import dos from '../assets/imgs/dos.jpeg';
+import dos from '../assets/imgs/inicio.jpeg';
 
 
 const Inicio = () => {
@@ -17,6 +17,7 @@ const handleNavigation = (path: string) => {
     <div className={styles.container}>
       <nav className={styles.navbar}>
         <ul className={styles.menu}>
+          <li onClick={()=> handleNavigation('/inicio')}>HOME</li>
           <li onClick={() => handleNavigation('/RegistrarUsuario')}>REGISTRAR NUEVO USUARIO</li>
           <li onClick={() => handleNavigation('/RegistrarProductos')}>REGISTRAR PRODUCTOS</li>
           <li onClick={() => handleNavigation('/Visualizar')}>VISUALIZAR REGISTRADO</li>

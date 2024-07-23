@@ -4,7 +4,10 @@ import Button from 'react-bootstrap/Button';
 import { Producto } from '../Interfaces/IProducto';
 import { registrarProducto } from '../Firebase/Promesas';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '../styles/Registro.module.css';
+import styles from '../styles/Login.module.css';
+import Image from 'next/image';
+import nueve from '../assets/imgs/seis.jpg';
+
 
 const initialState: Producto = {
     nombre: "",
@@ -54,64 +57,70 @@ const RegistrarProducto: React.FC = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.card}>
-                <h1 className={styles.cardTitulo}>Registrar Producto</h1>
-                {error && <div className="alert alert-danger">{error}</div>}
-                <Form>
-                    <Form.Group>
-                        <Form.Label className={styles.formLabel}>Nombre:</Form.Label>
-                        <Form.Control className={styles.formEstilo}
-                            type='text'
-                            placeholder='Ingrese el nombre del producto'
-                            name="nombre"
-                            value={producto.nombre}
-                            onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label className={styles.formLabel}>Categoría:</Form.Label>
-                        <Form.Control className={styles.formEstilo}
-                            type='text'
-                            placeholder='Ingrese la categoría del producto'
-                            name="categoria"
-                            value={producto.categoria}
-                            onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label className={styles.formLabel}>Descripción:</Form.Label>
-                        <Form.Control className={styles.formEstilo}
-                            as='textarea'
-                            placeholder='Ingrese la descripción del producto'
-                            name="descripcion"
-                            value={producto.descripcion}
-                            onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label className={styles.formLabel}>Precio:</Form.Label>
-                        <Form.Control className={styles.formEstilo}
-                            type='number'
-                            placeholder='Ingrese el precio del producto'
-                            name="precio"
-                            value={producto.precio}
-                            onChange={(e) => handleProducto(e.currentTarget.name, parseFloat(e.currentTarget.value))}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label className={styles.formLabel}>Cantidad:</Form.Label>
-                        <Form.Control className={styles.formEstilo}
-                            type='number'
-                            placeholder='Ingrese la cantidad del producto'
-                            name="cantidad"
-                            value={producto.cantidad}
-                            onChange={(e) => handleProducto(e.currentTarget.name, parseInt(e.currentTarget.value))}
-                        />
-                    </Form.Group>
-                    <Button type="button" variant='success' className={styles.btn} onClick={registrar}>
-                        Registrar Producto
-                    </Button>
-                </Form>
+            <div className={styles.loginBox}>
+                <div className={styles.textSection}>
+                    <Image src={nueve} alt="Registrar Producto" />
+                </div>
+                <div className={styles.formSection}>
+                    <h3>RHODE</h3>
+                    <h2>Registrar Producto</h2>
+                    {error && <div className="alert alert-danger">{error}</div>}
+                    <Form>
+                        <Form.Group>
+                            <Form.Label className={styles.formLabel}>Nombre:</Form.Label>
+                            <Form.Control className={styles.formEstilo}
+                                type='text'
+                                placeholder='Ingrese el nombre del producto'
+                                name="nombre"
+                                value={producto.nombre}
+                                onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className={styles.formLabel}>Categoría:</Form.Label>
+                            <Form.Control className={styles.formEstilo}
+                                type='text'
+                                placeholder='Ingrese la categoría del producto'
+                                name="categoria"
+                                value={producto.categoria}
+                                onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className={styles.formLabel}>Descripción:</Form.Label>
+                            <Form.Control className={styles.formEstilo}
+                                as='textarea'
+                                placeholder='Ingrese la descripción del producto'
+                                name="descripcion"
+                                value={producto.descripcion}
+                                onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className={styles.formLabel}>Precio:</Form.Label>
+                            <Form.Control className={styles.formEstilo}
+                                type='number'
+                                placeholder='Ingrese el precio del producto'
+                                name="precio"
+                                value={producto.precio}
+                                onChange={(e) => handleProducto(e.currentTarget.name, parseFloat(e.currentTarget.value))}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className={styles.formLabel}>Cantidad:</Form.Label>
+                            <Form.Control className={styles.formEstilo}
+                                type='number'
+                                placeholder='Ingrese la cantidad del producto'
+                                name="cantidad"
+                                value={producto.cantidad}
+                                onChange={(e) => handleProducto(e.currentTarget.name, parseInt(e.currentTarget.value))}
+                            />
+                        </Form.Group>
+                        <Button type="button" variant='success' className={styles.loginButton} onClick={registrar}>
+                            Registrar Producto
+                        </Button>
+                    </Form>
+                </div>
             </div>
         </div>
     );

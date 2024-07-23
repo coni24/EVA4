@@ -49,9 +49,6 @@ export const obtenerUsuario = async(nombreUsuario:string)=>{
     }
 }
 
-
-
-
 export const obtenerPersona = async(key:string)=>{
     const docRef = doc(db, "personas", key);
     const docSnap = await getDoc(docRef);

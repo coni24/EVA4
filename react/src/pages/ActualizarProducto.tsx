@@ -3,13 +3,15 @@ import {Producto} from '@/Interfaces/IProducto';
 import { useRouter } from "next/router";
 import React, {useEffect,useState} from 'react';
 import {Button, Form} from 'react-bootstrap';
+import styles from '../styles/Actualizar.module.css';
 
 const initialState:Producto = {
     nombre:"",
     categoria:"",
     descripcion:"",
     precio:0,
-    cantidad:0
+    cantidad:0,
+    key:""
 }
 
 export const ActualizarProducto = () => {
@@ -41,22 +43,25 @@ export const ActualizarProducto = () => {
     const modificar = ()=>{
       actualizarProducto(producto).then(()=>{
           alert("Se actualiza con exito")
+          router.push('/Visualizar')
       })
     }
     return (
-      <>
+        <div className={styles.container}>
+            <div className={`card ${styles.card}`}>
+                <h1 className={styles.cardTitulo}>Actualizar Producto</h1>
           <Form>
           <Form.Group>
-              <Form.Label>Nombre:</Form.Label>
-              <Form.Control  type='text' placeholder='Ingrese su nombre: '
+              <Form.Label className={styles.formLabel}>Nombre:</Form.Label>
+              <Form.Control className={styles.formEstilo}  type='text' placeholder='Ingrese su nombre: '
               value={producto.nombre}
               name="nombre"
               onChange={(e)=>{handleProducto(e.currentTarget.name,e.currentTarget.value)}} />
               <Form.Text></Form.Text>
           </Form.Group>
           <Form.Group>
-              <Form.Label>Apellido:</Form.Label>
-              <Form.Control  type='text' placeholder='Ingrese su apellido: '
+              <Form.Label className={styles.formLabel}>Categoría:</Form.Label>
+              <Form.Control className={styles.formEstilo} type='text' placeholder='Ingrese su apellido: '
               value={producto.categoria}
                name="apellido"
                onChange={(e)=>{handleProducto(e.currentTarget.name,e.currentTarget.value)}} />
@@ -64,8 +69,8 @@ export const ActualizarProducto = () => {
               <Form.Text></Form.Text>
           </Form.Group>
           <Form.Group>
-              <Form.Label>Correo:</Form.Label>
-              <Form.Control  type='email' placeholder='Ingrese su correo: ' 
+              <Form.Label className={styles.formLabel}>Descripción:</Form.Label>
+              <Form.Control className={styles.formEstilo}  type='email' placeholder='Ingrese su correo: ' 
               value={producto.descripcion}
                name="correo"
                onChange={(e)=>{handleProducto(e.currentTarget.name,e.currentTarget.value)}} />
@@ -73,8 +78,8 @@ export const ActualizarProducto = () => {
               <Form.Text></Form.Text>
           </Form.Group>
           <Form.Group>
-              <Form.Label>Fecha Nacimiento:</Form.Label>
-              <Form.Control  type='date' placeholder='Ingrese su fecha de nacimiento: ' 
+              <Form.Label className={styles.formLabel}>Precio:</Form.Label>
+              <Form.Control className={styles.formEstilo} type='date' placeholder='Ingrese su fecha de nacimiento: ' 
               value={producto.precio}
                name="fechaNacimiento"
                onChange={(e)=>{handleProducto(e.currentTarget.name,e.currentTarget.value)}} />
@@ -82,18 +87,19 @@ export const ActualizarProducto = () => {
               <Form.Text></Form.Text>
           </Form.Group>
           <Form.Group>
-              <Form.Label>Edad:</Form.Label>
-              <Form.Control  type='number' placeholder='Ingrese su edad: ' 
+              <Form.Label className={styles.formLabel}>Cantidad:</Form.Label>
+              <Form.Control className={styles.formEstilo} type='number' placeholder='Ingrese su edad: ' 
               value={producto.cantidad}
                name="edad"
                onChange={(e)=>{handleProducto(e.currentTarget.name,e.currentTarget.value)}} />
                
               <Form.Text></Form.Text>
           </Form.Group>
-          <Button type="button" variant='success'
-              onClick={modificar}>Modificar</Button>
+          <Button  className={styles.btn} type="button" variant='success'
+              onClick={modificar}>ACTUALIZAR</Button>
       </Form>
-      </>
+      </div>
+    </div>
     )
   }
-  export default ActualizarProducto
+  export default ActualizarProducto;
