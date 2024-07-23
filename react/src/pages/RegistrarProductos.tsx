@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import { Producto } from '../Interfaces/IProducto';
 import { registrarProducto } from '../Firebase/Promesas';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '../styles/Login.module.css';
+import styles from '../styles/RegistroProducto.module.css';
 import Image from 'next/image';
 import nueve from '../assets/imgs/seis.jpg';
 
@@ -40,7 +40,7 @@ const RegistrarProducto: React.FC = () => {
 
     const registrar = async () => {
         if (!validarCampos()) {
-            setError("Todos los campos son obligatorios y deben ser válidos.");
+            setError("Todos los campos son obligatorios.");
             return;
         }
 
@@ -62,7 +62,6 @@ const RegistrarProducto: React.FC = () => {
                     <Image src={nueve} alt="Registrar Producto" />
                 </div>
                 <div className={styles.formSection}>
-                    <h3>RHODE</h3>
                     <h2>Registrar Producto</h2>
                     {error && <div className="alert alert-danger">{error}</div>}
                     <Form>
