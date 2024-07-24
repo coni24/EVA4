@@ -14,14 +14,17 @@ const initialState: Producto = {
     categoria: "",
     descripcion: "",
     precio: 0,
-    cantidad: 0
+    cantidad: 0,
+    ingredientes: "",
+    disponible: false,
+    tipoPiel: ""
 };
 
 const RegistrarProducto: React.FC = () => {
     const [producto, setProducto] = useState<Producto>(initialState);
     const [error, setError] = useState<string | null>(null);
 
-    const handleProducto = (name: string, value: string | number) => {
+    const handleProducto = (name: string, value: string | number | boolean) => {
         setProducto({ ...producto, [name]: value });
     };
 
@@ -31,7 +34,8 @@ const RegistrarProducto: React.FC = () => {
             !producto.categoria.trim() ||
             !producto.descripcion.trim() ||
             producto.precio <= 0 ||
-            producto.cantidad <= 0
+            producto.cantidad <= 0 ||
+            !producto.tipoPiel.trim()
         ) {
             return false;
         }
@@ -67,53 +71,54 @@ const RegistrarProducto: React.FC = () => {
                     <Form>
                         <Form.Group>
                             <Form.Label className={styles.formLabel}>Nombre:</Form.Label>
-                            <Form.Control className={styles.formEstilo}
-                                type='text'
-                                placeholder='Ingrese el nombre del producto'
-                                name="nombre"
-                                value={producto.nombre}
+                            <Form.Control className={styles.formEstilo} type='text'placeholder='Ingrese el nombre del producto'
+                                name="nombre" value={producto.nombre}
                                 onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}
                             />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className={styles.formLabel}>Categoría:</Form.Label>
-                            <Form.Control className={styles.formEstilo}
-                                type='text'
-                                placeholder='Ingrese la categoría del producto'
-                                name="categoria"
-                                value={producto.categoria}
-                                onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}
-                            />
+                            <Form.Control className={styles.formEstilo} type='text'placeholder='Ingrese la categoría del producto'
+                            name="categoria" value={producto.categoria}
+                                onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}/>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className={styles.formLabel}>Descripción:</Form.Label>
-                            <Form.Control className={styles.formEstilo}
-                                as='textarea'
-                                placeholder='Ingrese la descripción del producto'
-                                name="descripcion"
-                                value={producto.descripcion}
-                                onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}
+                            <Form.Control className={styles.formEstilo} as='textarea'placeholder='Ingrese la descripción del producto'
+                            name="descripcion" value={producto.descripcion}
+                            onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}
                             />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className={styles.formLabel}>Precio:</Form.Label>
-                            <Form.Control className={styles.formEstilo}
-                                type='number'
-                                placeholder='Ingrese el precio del producto'
-                                name="precio"
-                                value={producto.precio}
-                                onChange={(e) => handleProducto(e.currentTarget.name, parseFloat(e.currentTarget.value))}
-                            />
+                            <Form.Control className={styles.formEstilo} type='number' placeholder='Ingrese el precio del producto'
+                                name="precio" value={producto.precio}
+                                onChange={(e) => handleProducto(e.currentTarget.name, parseFloat(e.currentTarget.value))}/>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label className={styles.formLabel}>Cantidad:</Form.Label>
-                            <Form.Control className={styles.formEstilo}
-                                type='number'
-                                placeholder='Ingrese la cantidad del producto'
-                                name="cantidad"
-                                value={producto.cantidad}
-                                onChange={(e) => handleProducto(e.currentTarget.name, parseInt(e.currentTarget.value))}
-                            />
+                            <Form.Control className={styles.formEstilo} type='number'placeholder='Ingrese la cantidad del producto' name="cantidad" 
+                            value={producto.cantidad} onChange={(e) => handleProducto(e.currentTarget.name, parseInt(e.currentTarget.value))}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className={styles.formLabel}>Ingredientes:</Form.Label>
+                            <Form.Control className={styles.formEstilo} as='textarea' placeholder='Ingrese los ingredientes del producto'
+                            name="ingredientes" value={producto.ingredientes}
+                            onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className={styles.formLabel}>Disponible:</Form.Label>
+                            <Form.Check type="checkbox" label="Producto disponible" name="disponible" checked={producto.disponible}
+                            onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.checked)}/>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label className={styles.formLabel}>Tipo de Piel:</Form.Label>
+                            <Form.Check type="radio" label="Seca" name="tipoPiel" value="Seca"checked={producto.tipoPiel === "Seca"}
+                            onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}/>
+                            <Form.Check type="radio" label="Grasa"name="tipoPiel"value="Grasa" checked={producto.tipoPiel === "Grasa"}
+                            onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}/>
+                            <Form.Check type="radio" label="Mixta"name="tipoPiel" value="Mixta"checked={producto.tipoPiel === "Mixta"}
+                            onChange={(e) => handleProducto(e.currentTarget.name, e.currentTarget.value)}/>
                         </Form.Group>
                         <Button type="button" variant='success' className={styles.loginButton} onClick={registrar}>
                             Registrar Producto

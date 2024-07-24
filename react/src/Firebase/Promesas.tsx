@@ -22,6 +22,8 @@ export const obtenerPersonas = async()=>{
             edad:doc.data().edad,
             fechaNacimiento:doc.data().fechaNacimiento,
             nombre:doc.data().nombre,
+            genero: doc.data().genero,
+            notificacion: doc.data().notificacion,
             key:doc.id
         }
         personas.push(persona)
@@ -41,6 +43,8 @@ export const obtenerUsuario = async(nombreUsuario:string)=>{
             edad: doc.data().edad,
             fechaNacimiento: doc.data().fechaNacimiento,
             nombre: doc.data().nombre,
+            genero: doc.data().genero,
+            notificacion: doc.data().notificacion,
             key: doc.id
         }
         return persona;
@@ -60,6 +64,8 @@ export const obtenerPersona = async(key:string)=>{
             edad:docSnap.data().edad,
             fechaNacimiento:docSnap.data().fechaNacimiento,
             nombre:docSnap.data().nombre,
+            genero: docSnap.data().genero,
+            notificacion: docSnap.data().notificacion,
             key:docSnap.id
         }
         return persona
@@ -83,6 +89,9 @@ export const obtenerProductos = async()=>{
             descripcion:doc.data().descripcion,
             precio:doc.data().precio,
             cantidad:doc.data().cantidad,
+            ingredientes: doc.data().ingredientes,
+            disponible: doc.data().disponible,
+            tipoPiel: doc.data().tipoPiel,
             key:doc.id
         }
         productos.push(producto)
@@ -99,6 +108,10 @@ export const obtenerProducto = async(key:string)=>{
             descripcion:docSnap.data().descripcion,
             precio:docSnap.data().precio,
             cantidad:docSnap.data().cantidad,
+            ingredientes: docSnap.data().ingredientes,
+            disponible: docSnap.data().disponible,
+            tipoPiel: docSnap.data().tipoPiel, 
+
             key:docSnap.id
         }
         return producto 
@@ -113,3 +126,12 @@ export const actualizarProducto = async(p:Producto)=>{
 };
 
 
+export const eliminarProducto = async (key: string) => {
+    const docRef = doc(db, "productos", key);
+    await deleteDoc(docRef);
+};
+
+export const eliminarPersona = async (key: string) => {
+    const docRef = doc(db, "personas", key);
+    await deleteDoc(docRef);
+};

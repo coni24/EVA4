@@ -4,5 +4,8 @@ export interface Producto {
     descripcion: string;
     precio: number;
     cantidad: number;
+    ingredientes: string,
+    disponible: boolean,
+    tipoPiel: string,
     key?:string
 }

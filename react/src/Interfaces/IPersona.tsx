@@ -5,5 +5,7 @@ export interface Persona{
     edad:number,
     fechaNacimiento:string,
     correo:string,
+    genero: string,
+    notificacion: boolean,
     key?:string
 }

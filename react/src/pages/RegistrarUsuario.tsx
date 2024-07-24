@@ -12,14 +12,17 @@ const initialState: Persona = {
     nombreUsuario: "",
     correo: "",
     edad: 0,
-    fechaNacimiento: ""
+    fechaNacimiento: "",
+    genero:"",
+    notificacion: false
+
 };
 
 function RegistrarUsuario() {
     const [persona, setPersona] = useState<Persona>(initialState);
     const [error, setError] = useState<string | null>(null);
 
-    const handlePersona = (name: string, value: string | number) => {
+    const handlePersona = (name: string, value: string | number | boolean) => {
         setPersona({ ...persona, [name]: value });
     };
 
@@ -29,7 +32,8 @@ function RegistrarUsuario() {
             !persona.password.trim() ||
             !persona.correo.trim() ||
             !persona.fechaNacimiento.trim() ||
-            persona.edad <= 0
+            persona.edad <= 0 ||
+            !persona.genero.trim()
         ) {
             return false;
         }
@@ -66,8 +70,7 @@ function RegistrarUsuario() {
                             placeholder='Ingrese su nombre'
                             name="nombre"
                             value={persona.nombre}
-                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
-                        />
+                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label className={styles.formLabel}>Contraseña:</Form.Label>
@@ -76,8 +79,7 @@ function RegistrarUsuario() {
                             placeholder='Ingrese su contraseña'
                             name="password"
                             value={persona.password}
-                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
-                        />
+                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label className={styles.formLabel}>Nombre de Usuario:</Form.Label>
@@ -86,8 +88,7 @@ function RegistrarUsuario() {
                             placeholder='Ingrese su nombre de usuario'
                             name="nombreUsuario"
                             value={persona.nombreUsuario}
-                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
-                        />
+                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}/>
                     </Form.Group>
                     <Form.Group> 
                         <Form.Label className={styles.formLabel}>Correo:</Form.Label>
@@ -96,8 +97,7 @@ function RegistrarUsuario() {
                             placeholder='Ingrese su correo'
                             name="correo"
                             value={persona.correo}
-                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
-                        />
+                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label className={styles.formLabel}>Fecha Nacimiento:</Form.Label>
@@ -106,8 +106,7 @@ function RegistrarUsuario() {
                             placeholder='Ingrese su fecha de nacimiento'
                             name="fechaNacimiento"
                             value={persona.fechaNacimiento}
-                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}
-                        />
+                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}/>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label className={styles.formLabel}>Edad:</Form.Label>
@@ -116,8 +115,23 @@ function RegistrarUsuario() {
                             placeholder='Ingrese su edad'
                             name="edad"
                             value={persona.edad}
-                            onChange={(e) => handlePersona(e.currentTarget.name, parseInt(e.currentTarget.value))}
-                        />
+                            onChange={(e) => handlePersona(e.currentTarget.name, parseInt(e.currentTarget.value))}/>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label className={styles.formLabel}>Género:</Form.Label>
+                        <Form.Check 
+                            type="radio" label="Masculino" name="genero" value="Masculino" checked={persona.genero === "Masculino"}
+                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}/>
+                        <Form.Check 
+                            type="radio" label="Femenino" name="genero" value="Femenino" checked={persona.genero === "Femenino"}
+                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}/>
+                        <Form.Check 
+                            type="radio" label="Otro" name="genero" value="Otro" checked={persona.genero === "Otro"}
+                            onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.value)}/>
+                    </Form.Group><br></br>
+                    <Form.Group>
+                        <Form.Check type="checkbox" label="Recibir notificaciones" name="notificacion" checked={persona.notificacion}
+                        onChange={(e) => handlePersona(e.currentTarget.name, e.currentTarget.checked)}/>
                     </Form.Group>
                     <Button type="button" variant='success' className={styles.btn} onClick={registrar}>
                         REGISTRAR

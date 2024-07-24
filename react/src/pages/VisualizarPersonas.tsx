@@ -4,7 +4,7 @@ import { Button, Modal} from 'react-bootstrap';
 import Link from 'next/link';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { obtenerPersonas} from '@/Firebase/Promesas';
+import { eliminarPersona, obtenerPersonas} from '@/Firebase/Promesas';
 import { Persona } from '@/Interfaces/IPersona';
 import styles from '../styles/Visualizar.module.css';
 
@@ -20,10 +20,17 @@ export const Visualizar = () => {
             console.log(e)
             alert("Algo ocurrio")
         });
-
-
-
     },[])
+
+    const handleEliminar = async (key: string) => {
+        try {
+            await eliminarPersona(key);
+            setPersonas(personas.filter(p=>p.key !== key));
+        }catch(e){
+            console.error(e);
+            alert("Error al eliminar producto")
+        }
+    };
 
     return (
         <div className={styles.contenedor}>
@@ -38,6 +45,8 @@ export const Visualizar = () => {
                                 <th>Correo</th>
                                 <th>Fecha Nacimiento</th>
                                 <th>Edad</th>
+                                <th>Género</th>
+                                <th>Notificaciones</th>
                                 <th>Acción</th>
                             </tr>
                         </thead>
@@ -49,11 +58,14 @@ export const Visualizar = () => {
                                     <td>{p.correo}</td>
                                     <td>{p.fechaNacimiento}</td>
                                     <td>{p.edad}</td>
+                                    <td>{p.genero}</td>
+                                    <td>{p.notificacion ? "Sí" : "No"}</td>
                                     <td>
                                         <Link href={{ pathname: 'ActualizarPersona', query: { key: p.key } }}>
                                             <Button variant='warning' className={styles.btnEdit}><FaEdit /></Button>
                                         </Link>
-                                        <Button variant='danger' className={styles.btnDelete}><MdDelete /></Button>
+                                        <Button variant='danger' className={styles.btnDelete} onClick={()=>
+                                            handleEliminar(p.key!)}><MdDelete /></Button>
                                     </td>
                                 </tr>
                             ))}
