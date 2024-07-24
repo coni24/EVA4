@@ -82,7 +82,7 @@ export const ActualizarProducto = () => {
           </Form.Group>
           <Form.Group>
               <Form.Label className={styles.formLabel}>Precio:</Form.Label>
-              <Form.Control className={styles.formEstilo} type='date' placeholder='Ingrese su fecha de nacimiento: ' 
+              <Form.Control className={styles.formEstilo} type='number' placeholder='Ingrese su fecha de nacimiento: ' 
               value={producto.precio}
                name="fechaNacimiento"
                onChange={(e)=>{handleProducto(e.currentTarget.name,e.currentTarget.value)}} />
